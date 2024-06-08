@@ -2,7 +2,7 @@ package org.example.dto;
 
 import jakarta.ws.rs.QueryParam;
 
-public class EmployeesFilterDTO {
+public class EmployeeFilterDto {
     private @QueryParam("salary") Double salary;
     private @QueryParam("limit") Integer limit;
     private @QueryParam("offset") int offset;
