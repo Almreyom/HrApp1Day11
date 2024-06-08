@@ -5,7 +5,7 @@ package org.example.Helper;
 import jakarta.ws.rs.ext.ParamConverter;
 import jakarta.ws.rs.ext.ParamConverterProvider;
 import jakarta.ws.rs.ext.Provider;
-import org.example.FilterDTO.EMPSDDTO;
+import org.example.Dto.EMPSDDTO;
 
 
 import java.lang.annotation.Annotation;

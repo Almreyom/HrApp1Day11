@@ -1,6 +1,6 @@
 package org.example.DAO;
 
-import org.example.FilterDTO.EmployeesFilterDTO;
+import org.example.Dto.EmployeesFilterDTO;
 import org.example.Model.Employees;
 
 import java.sql.*;

@@ -1,12 +1,10 @@
 package org.example.Exceptions;
 
 
-import com.sun.org.apache.xalan.internal.xsltc.runtime.ErrorMessages;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
-import org.example.FilterDTO.ErrorMessage;
-import org.glassfish.jersey.internal.Errors;
+import org.example.Dto.ErrorMessage;
 
 import java.sql.SQLException;
 

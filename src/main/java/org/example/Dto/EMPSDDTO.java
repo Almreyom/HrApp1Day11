@@ -1,4 +1,4 @@
-package org.example.FilterDTO;
+package org.example.Dto;
 
 public class EMPSDDTO {
     private String deptcode;

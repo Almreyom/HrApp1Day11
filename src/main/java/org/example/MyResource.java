@@ -11,9 +11,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.core.UriInfo;
-import org.example.FilterDTO.EMPSDDTO;
-
-import java.time.LocalDate;
+import org.example.Dto.EMPSDDTO;
 
 /**
  * Root resource (exposed at "myresource" path)

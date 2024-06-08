@@ -1,11 +1,10 @@
-package org.example.Model;
-
+package org.example.Dto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class Employees {
-
+public class EmployeesDto {
     private int employeesId;
     private String firstName;
     private String lastName;
@@ -13,18 +12,13 @@ public class Employees {
     private String phoneNumber;
     private String hireDate;
     private double salary;
+    private ArrayList<LinkDto> links = new ArrayList<>();
 
-    public Employees(ResultSet rs) throws SQLException {
-        employeesId = rs.getInt("employee_id");
-        firstName = rs.getString("first_name");
-        lastName = rs.getString("last_name");
-        email = rs.getString("email");
-        phoneNumber = rs.getString("phone_number");
-        hireDate = rs.getString("hire_date");
-        salary = rs.getDouble("salary");
+    public EmployeesDto(){
+
     }
 
-    public Employees(int employeesId, String firstName, String lastName, String email, String phoneNumber, String hireDate, double salary) {
+    public EmployeesDto(int employeesId, String firstName, String lastName, String email, String phoneNumber, String hireDate, double salary) {
         this.employeesId = employeesId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,9 +27,14 @@ public class Employees {
         this.hireDate = hireDate;
         this.salary = salary;
     }
-
-    public Employees() {
-
+    public EmployeesDto(ResultSet rs)throws SQLException{
+        employeesId = rs.getInt("employeesId");
+        firstName = rs.getString("firstName");
+        lastName = rs.getString("lastName");
+        email = rs.getString("email");
+        phoneNumber = rs.getString("phoneNumber");
+        hireDate = rs.getString("hireDate");
+        salary = rs.getDouble("salary");
     }
 
     public int getEmployeesId() {
@@ -94,17 +93,25 @@ public class Employees {
         this.salary = salary;
     }
 
+    public ArrayList<LinkDto> getLinks() {
+        return links;
+    }
+
+    public void setLinks(ArrayList<LinkDto> links) {
+        this.links = links;
+    }
 
     @Override
     public String toString() {
-        return "Employees{" +
+        return "EmployeesDto{" +
                 "employeesId=" + employeesId +
-                ", farstName='" + firstName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", hireDate='" + hireDate + '\'' +
                 ", salary=" + salary +
+                ", links=" + links +
                 '}';
     }
 }
