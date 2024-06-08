@@ -1,4 +1,4 @@
-package org.example.Helper;
+package org.example.helper;
 
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;

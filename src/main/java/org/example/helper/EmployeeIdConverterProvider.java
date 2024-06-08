@@ -1,11 +1,11 @@
-package org.example.Helper;
+package org.example.helper;
 
 
 
 import jakarta.ws.rs.ext.ParamConverter;
 import jakarta.ws.rs.ext.ParamConverterProvider;
 import jakarta.ws.rs.ext.Provider;
-import org.example.Dto.EMPSDDTO;
+import org.example.dto.EMPSDDTO;
 
 
 import java.lang.annotation.Annotation;

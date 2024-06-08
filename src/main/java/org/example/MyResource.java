@@ -11,7 +11,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.core.UriInfo;
-import org.example.Dto.EMPSDDTO;
+import org.example.dto.EMPSDDTO;
 
 /**
  * Root resource (exposed at "myresource" path)
