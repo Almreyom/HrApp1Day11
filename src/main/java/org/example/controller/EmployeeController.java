@@ -1,16 +1,19 @@
 package org.example.controller;
 
+
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
-import org.example.dao.EmployeeDAO;
-import org.example.model.Employees;
-
 import java.util.ArrayList;
-
+import org.example.HW5.dao.EmployeeDAO;
+import org.example.HW5.models.Employees;
+import org.example.Mapper.EmployeeMapper;
+import org.example.Mapper.JobMapper;
+import org.example.dto.EmployeesDto;
+import org.example.dto.JobsDto;
 
 @Path("/employees")
 public class EmployeeController {
@@ -50,15 +53,9 @@ public class EmployeeController {
             throw new RuntimeException(e);
         }
     }
-    private void addLinks(EmployeesDto dto) {
-        URI selfUri = uriInfo.getAbsolutePath();
-        URI empsUri = uriInfo.getAbsolutePathBuilder()
-                .path(EmployeesControler.class)
-                .build();
+    EmployeesDto dto = EmployeeMapper.INSTANCE.toDeptDto(emp);
+    addLinks(dto);
 
-        dto.addLink(selfUri.toString(), "self");
-        dto.addLink(empsUri.toString(), "employees");
-    }
     @POST
     public void INSERT_JOB(Employees Employees) {
         try {

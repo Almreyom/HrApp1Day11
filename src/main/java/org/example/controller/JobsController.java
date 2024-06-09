@@ -2,6 +2,7 @@ package org.example.controller;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
+import org.example.Mapper.JobMapper;
 import org.example.dao.EmployeeDAO;
 import org.example.dao.JobsDAO;
 import org.example.dto.JobFilterDto;
@@ -75,11 +76,13 @@ public class JobsController {
             }
             //headers.getAcceptableMediaTypes().contains(MediaType.valueOf(MediaType.APPLICATION_XML) {
 
-            JobsDto dto = new JobsDto();
-            dto.setJob_id(job.getJob_Id());
-            dto.setJob_title(job.getJob_title());
-            dto.setMin_salary(job.getMin_salary());
-            dto.setMax_salary(job.getMax_salary());
+//            JobsDto dto = new JobsDto();
+//            dto.setJob_id(job.getJob_Id());
+//            dto.setJob_title(job.getJob_title());
+//            dto.setMin_salary(job.getMin_salary());
+//            dto.setMax_salary(job.getMax_salary());
+            JobsDto dto = JobMapper.INSTANCE.toDeptDto(job);
+            addLinks(dto);
 
             addLinks(dto);
             return Response.ok(dto).build();
@@ -108,7 +111,7 @@ public class JobsController {
     public void DELETE_JOB(@PathParam("job_id") int job_id) {
 
         try {
-            dao.deleteJob(job_id);
+            dao.DELETE_JOB(job_id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -136,7 +139,7 @@ public class JobsController {
 
         try {
             job.setJob_Id(job_id);
-            dao.updateJob(job);
+            dao.UPDATE_JOB(job);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
