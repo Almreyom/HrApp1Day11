@@ -12,7 +12,10 @@ public class Employees {
     private String email;
     private String phoneNumber;
     private String hireDate;
+    private int job_id;
     private double salary;
+    private int manger_id;
+    private int department_id;
 
     public Employees(ResultSet rs) throws SQLException {
         employeesId = rs.getInt("employee_id");
@@ -86,6 +89,14 @@ public class Employees {
         this.hireDate = hireDate;
     }
 
+    public int getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(int job_id) {
+        this.job_id = job_id;
+    }
+
     public double getSalary() {
         return salary;
     }
@@ -94,17 +105,35 @@ public class Employees {
         this.salary = salary;
     }
 
+    public int getManger_id() {
+        return manger_id;
+    }
+
+    public void setManger_id(int manger_id) {
+        this.manger_id = manger_id;
+    }
+
+    public int getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
+    }
 
     @Override
     public String toString() {
         return "Employees{" +
                 "employeesId=" + employeesId +
-                ", farstName='" + firstName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", hireDate='" + hireDate + '\'' +
+                ", job_id=" + job_id +
                 ", salary=" + salary +
+                ", manger_id=" + manger_id +
+                ", department_id=" + department_id +
                 '}';
     }
 }

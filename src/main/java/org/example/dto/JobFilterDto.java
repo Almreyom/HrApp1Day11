@@ -1,18 +1,21 @@
 package org.example.dto;
 
+
 import jakarta.ws.rs.QueryParam;
 
-public class EmployeeFilterDto {
-    private @QueryParam("salary") Double salary;
+public class JobFilterDto {
+
+    private @QueryParam("min_salary") Double min_salary;
     private @QueryParam("limit") Integer limit;
     private @QueryParam("offset") int offset;
 
-    public Double getSalary() {
-        return salary;
+
+    public Double getMin_salary() {
+        return min_salary;
     }
 
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    public void setMin_salary(Double min_salary) {
+        this.min_salary = min_salary;
     }
 
     public Integer getLimit() {
@@ -31,5 +34,3 @@ public class EmployeeFilterDto {
         this.offset = offset;
     }
 }
-
-

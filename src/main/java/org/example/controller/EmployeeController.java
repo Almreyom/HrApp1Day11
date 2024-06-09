@@ -98,9 +98,9 @@ public class EmployeeController {
 
     @PUT
     @Path("{employees_id}")
-    public void updateEmployees(@PathParam("employees_id") int employees_id, Employees employees) {
+    public void updateEmployees(@PathParam("employees_id") int employeesId, Employees employees) {
         try {
-            employees.setEmployeesId((employees_id);
+            employees.setEmployeesId(employeesId);
             dao.updateEmployees(employees);
         } catch (Exception e) {
             throw new RuntimeException(e);

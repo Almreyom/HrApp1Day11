@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 
 public class EmployeeDAO {
-    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\IdeaProjects\\Hrapp1day8\\hr.db";
+    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\Hrapp1day8\\src\\main\\java\\org\\example\\hr.db";
     private static final String SELECT_ALL_EMPLOYS = "select * from employees";
     private static final String SELECT_ONE_EMPLOYS = "select * from employees where employee_id = ?";
     private static final String INSERT_EMPLOYS = "insert into employees values (?, ?, ?,?,?,?,?,?,?,?)";
@@ -38,9 +38,9 @@ public class EmployeeDAO {
         st.setString(4, e.getEmail());
         st.setString(5, e.getPhoneNumber());
         st.setString(6, e.getHireDate());
-        st.setInt(7, e.getJob_Id());
+        st.setInt(7, e.getJob_id());
         st.setDouble(8, e.getSalary());
-        st.setInt(9, e.getManager_id());
+        st.setInt(9, e.getManger_id());
         st.setInt(10, e.getDepartment_id());
         st.executeUpdate();
     }
@@ -57,7 +57,7 @@ public class EmployeeDAO {
         st.setString(6, e.getHireDate());
         st.setInt(7, e.getJob_id());
         st.setDouble(8, e.getSalary());
-        st.setInt(9, e.getManager_id());
+        st.setInt(9, e.getManger_id());
         st.setInt(10, e.getDepartment_id());
         st.executeUpdate();
     }
@@ -85,10 +85,11 @@ public class EmployeeDAO {
         PreparedStatement st ;
         if (filterDto != null && filterDto != null){
             st = conn.prepareStatement(SELECT_employees_WITH_ID_PAGINATION);
-            st.setInt(1,filterDto.getEmployeeId());
-            st.setInt(2,filterDto.getLimit());} else if (filterDto.getEmployeeId()!=null) {
+            st.setDouble(1,filterDto.getSalary());
+            st.setDouble(2,filterDto.getLimit());
+        } else if (0 != filterDto.getOffset()) {
             st = conn.prepareStatement(SELECT_employees_WITH_ID);
-            st.setInt(1,filterDto.getEmployeeId());
+            st.setDouble(1,filterDto.getSalary());
         } else if (filterDto.getLimit()!=null) {
             st = conn.prepareStatement(SELECT_employees_WITH_PAGINATION);
             st.setInt(1,filterDto.getLimit());
