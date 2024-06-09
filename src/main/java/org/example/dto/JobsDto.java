@@ -11,6 +11,7 @@ public class JobsDto {
     private String job_title;
     private double min_salary;
     private double max_salary;
+    private EmployeesDto Dto;
     private ArrayList<LinkDto> links = new ArrayList<>();
 
     public JobsDto() {
@@ -62,6 +63,14 @@ public class JobsDto {
         this.max_salary = max_salary;
     }
 
+    public EmployeesDto getDto() {
+        return Dto;
+    }
+
+    public void setDto(EmployeesDto dto) {
+        Dto = dto;
+    }
+
     public ArrayList<LinkDto> getLinks() {
         return links;
     }
@@ -80,6 +89,7 @@ public class JobsDto {
                 ", job_title='" + job_title + '\'' +
                 ", min_salary=" + min_salary +
                 ", max_salary=" + max_salary +
+                ", Dto=" + Dto +
                 ", links=" + links +
                 '}';
     }

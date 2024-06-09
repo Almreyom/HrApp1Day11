@@ -2,6 +2,7 @@ package org.example.controller;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
+import org.example.dao.EmployeeDAO;
 import org.example.dao.JobsDAO;
 import org.example.dto.JobFilterDto;
 import org.example.dto.JobsDto;
@@ -19,6 +20,7 @@ public class JobsController {
 
     JobsDAO dao = new JobsDAO();
     Jobs jobs = new Jobs();
+    EmployeeDAO EDao = new EmployeeDAO();
     @Context UriInfo uriInfo;
     @Context HttpHeaders headers;
 
@@ -66,7 +68,7 @@ public class JobsController {
     public Response SELECT_ONE_JOBS(@PathParam("job_id") int job_id)throws SQLException {
 
         try {
-            Jobs job = dao.selectJob(job_id);
+            Jobs job = dao.SELECT_ONE_JOBS(job_id);
             if(job == null ){
 
                 throw new DataNotFoundException("jobs " + job_id + "Not found");

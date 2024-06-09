@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class JobsDAO {
 
 
-    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\Hrapp1day8\\src\\main\\java\\org\\example\\hr.db";
+    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\Hrapp1day9\\src\\main\\java\\org\\example\\hr.db";
     private  static final String SELECT_ALL_JOBS = "select * from jobs";
     private static final String SELECT_ONE_JOBS = "select * from jobs where job_id = ?";
     private static final String SELECT_JOB_WITH_MIN_SALARY_PAGINATION = "select * from jobs where min_salary = ?";
@@ -29,7 +29,7 @@ public class JobsDAO {
         st.executeUpdate();
     }
 
-    public void updateJob(Jobs d) throws SQLException, ClassNotFoundException {
+    public void UPDATE_JOB(Jobs d) throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(URL);
         PreparedStatement st = conn.prepareStatement(UPDATE_JOB);
@@ -40,7 +40,7 @@ public class JobsDAO {
         st.executeUpdate();
     }
 
-    public void deleteJob(int job_id) throws SQLException, ClassNotFoundException {
+    public void DELETE_JOB(int job_id) throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(URL);
         PreparedStatement st = conn.prepareStatement(DELETE_JOB);
@@ -48,7 +48,7 @@ public class JobsDAO {
         st.executeUpdate();
     }
 
-    public Jobs selectJob(int job_id) throws SQLException, ClassNotFoundException {
+    public Jobs SELECT_ONE_JOBS(int job_id) throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(URL);
         PreparedStatement st = conn.prepareStatement(SELECT_ONE_JOBS);
