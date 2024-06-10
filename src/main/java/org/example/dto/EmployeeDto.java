@@ -9,13 +9,12 @@ public class EmployeeDto {
     private int IdSequence;
     private int hireYear;
 
-
-
     public EmployeeDto(String deptCode, int idSequence, int hireYear) {
         this.deptCode = deptCode;
         IdSequence = idSequence;
         this.hireYear = hireYear;
     }
+
 
     public EmployeeDto() {
 
@@ -47,6 +46,10 @@ public class EmployeeDto {
 
     @Override
     public String toString() {
-        return deptCode + IdSequence + hireYear;
+        return "EmployeeDto{" +
+                "deptCode='" + deptCode + '\'' +
+                ", IdSequence=" + IdSequence +
+                ", hireYear=" + hireYear +
+                '}';
     }
 }

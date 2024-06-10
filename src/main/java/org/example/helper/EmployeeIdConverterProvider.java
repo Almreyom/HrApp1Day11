@@ -7,7 +7,6 @@ import jakarta.ws.rs.ext.ParamConverterProvider;
 import jakarta.ws.rs.ext.Provider;
 import org.example.dto.EmployeeDto;
 
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
@@ -30,8 +29,8 @@ public class EmployeeIdConverterProvider implements ParamConverterProvider {
         public Object fromString(String value) {
 
             EmployeeDto empId = new EmployeeDto();
-            empId.setDeptcode(value.substring(0, 2));
-            empId.setSeq(Integer.parseInt(value.substring(2, 6)));
+            empId.setDeptCode(value.substring(0, 2));
+            empId.setIdSequence(Integer.parseInt(value.substring(2, 6)));
             empId.setHireYear(Integer.parseInt(value.substring(6)));
 
             return empId;
