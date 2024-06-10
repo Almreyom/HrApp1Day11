@@ -1,12 +1,13 @@
 package org.example.controller;
 
-import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 import org.example.Mapper.JobMapper;
-import org.example.dao.EmployeeDAO;
-import org.example.dao.JobsDAO;
 import org.example.dto.JobFilterDto;
+import org.example.dao.JobsDAO;
+import jakarta.ws.rs.*;
+
 import org.example.dto.JobsDto;
+
 import org.example.exceptions.DataNotFoundException;
 import org.example.model.Jobs;
 
@@ -15,13 +16,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+
 @Path("/jobs")
 @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, "text/csv"})
 public class JobsController {
 
     JobsDAO dao = new JobsDAO();
-    Jobs jobs = new Jobs();
-    EmployeeDAO EDao = new EmployeeDAO();
     @Context UriInfo uriInfo;
     @Context HttpHeaders headers;
 
@@ -69,22 +69,16 @@ public class JobsController {
     public Response SELECT_ONE_JOBS(@PathParam("job_id") int job_id)throws SQLException {
 
         try {
-            Jobs job = dao.SELECT_ONE_JOBS(job_id);
+            Jobs job = dao.selectJob(job_id);
             if(job == null ){
 
                 throw new DataNotFoundException("jobs " + job_id + "Not found");
             }
             //headers.getAcceptableMediaTypes().contains(MediaType.valueOf(MediaType.APPLICATION_XML) {
 
-//            JobsDto dto = new JobsDto();
-//            dto.setJob_id(job.getJob_Id());
-//            dto.setJob_title(job.getJob_title());
-//            dto.setMin_salary(job.getMin_salary());
-//            dto.setMax_salary(job.getMax_salary());
             JobsDto dto = JobMapper.INSTANCE.toDeptDto(job);
             addLinks(dto);
 
-            addLinks(dto);
             return Response.ok(dto).build();
             /* return Response
                     .ok(dto)
@@ -111,7 +105,7 @@ public class JobsController {
     public void DELETE_JOB(@PathParam("job_id") int job_id) {
 
         try {
-            dao.DELETE_JOB(job_id);
+            dao.deleteJob(job_id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -138,8 +132,8 @@ public class JobsController {
     public void UPDATE_JOB(@PathParam("job_id") int job_id, Jobs job) {
 
         try {
-            job.setJob_Id(job_id);
-            dao.UPDATE_JOB(job);
+            job.setJob_id(job_id);
+            dao.updateJob(job);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

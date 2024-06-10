@@ -5,7 +5,7 @@ package org.example.helper;
 import jakarta.ws.rs.ext.ParamConverter;
 import jakarta.ws.rs.ext.ParamConverterProvider;
 import jakarta.ws.rs.ext.Provider;
-import org.example.dto.EMPSDDTO;
+import org.example.dto.EmployeeDto;
 
 
 import java.lang.annotation.Annotation;
@@ -17,7 +17,7 @@ public class EmployeeIdConverterProvider implements ParamConverterProvider {
 
     @Override
     public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType, Annotation[] annotations) {
-        if(rawType.getName().equals(EMPSDDTO.class.getName())) {
+        if(rawType.getName().equals(EmployeeDto.class.getName())) {
             return new EmployeeIdParamConverter();
         }
         return null;
@@ -29,7 +29,7 @@ public class EmployeeIdConverterProvider implements ParamConverterProvider {
         @Override
         public Object fromString(String value) {
 
-            EMPSDDTO empId = new EMPSDDTO();
+            EmployeeDto empId = new EmployeeDto();
             empId.setDeptcode(value.substring(0, 2));
             empId.setSeq(Integer.parseInt(value.substring(2, 6)));
             empId.setHireYear(Integer.parseInt(value.substring(6)));

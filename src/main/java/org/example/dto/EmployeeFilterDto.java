@@ -3,16 +3,18 @@ package org.example.dto;
 import jakarta.ws.rs.QueryParam;
 
 public class EmployeeFilterDto {
-    private @QueryParam("salary") Double salary;
+
+    private @QueryParam("job_id") Integer job_id;
+    private @QueryParam("hireYear") String hireYear;
     private @QueryParam("limit") Integer limit;
     private @QueryParam("offset") int offset;
 
-    public Double getSalary() {
-        return salary;
+    public String getHireYear() {
+        return hireYear;
     }
 
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    public void setHireYear(String hireYear) {
+        this.hireYear = hireYear;
     }
 
     public Integer getLimit() {
@@ -23,6 +25,14 @@ public class EmployeeFilterDto {
         this.limit = limit;
     }
 
+    public Integer getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(Integer job_id) {
+        this.job_id = job_id;
+    }
+
     public int getOffset() {
         return offset;
     }
@@ -31,5 +41,3 @@ public class EmployeeFilterDto {
         this.offset = offset;
     }
 }
-
-

@@ -1,4 +1,5 @@
 package org.example.dao;
+
 import org.example.model.Employees;
 
 import java.sql.*;
@@ -8,8 +9,9 @@ public class EmployeeDAO {
 
     private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\Hrapp1day9\\src\\main\\java\\org\\example\\hr.db";
     private  static final  String SELECT_ALL_EMPLOYEES = "select * from employees";
-    private static final String SELECT_ONE_JOBS_JOIN_EMPLOYEES = "select * from jobs join employees on job.employees_id = employees.employees_id where job_id = ?";
     private static final String SELECT_ONE_EMPLOYEE = "select * from employees where employee_id = ?";
+    private static final String SELECT_ALL_EMP_JOIN_JOB = "select * from jobs join employees on jobs.job_id = employees.job_id";
+    private static final String SELECT_ONE_EMP_JOIN_JOB = "select * from jobs join employees on jobs.job_id = employees.job_id where job_id = ?";
     private static final String INSERT_EMPLOYEE = "insert into employees values (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     private static final String UPDATE_EMPLOYEE = "update employees set first_name = ?, last_name = ?, email = ? , phone_number = ? , hire_date = ? , job_id = ? , salary = ? , manager_id = ? , department_id = ?  where employee_id = ?";
     private static final String DELETE_EMPLOYEE = "delete from employees where employee_id = ?";
@@ -61,7 +63,8 @@ public class EmployeeDAO {
     public Employees selectEmployee(int employee_id) throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(URL);
-        PreparedStatement st = conn.prepareStatement(SELECT_ONE_EMPLOYEE);
+//        PreparedStatement st = conn.prepareStatement(SELECT_ONE_EMPLOYEE);
+        PreparedStatement st = conn.prepareStatement(SELECT_ONE_EMP_JOIN_JOB);
         st.setInt(1, employee_id);
         ResultSet rs = st.executeQuery();
         if(rs.next()) {
@@ -75,7 +78,8 @@ public class EmployeeDAO {
     public ArrayList<Employees> SELECT_ALL_EMPLOYEES() throws SQLException, ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection conn = DriverManager.getConnection(URL);
-        PreparedStatement st = conn.prepareStatement(SELECT_ALL_EMPLOYEES);
+//        PreparedStatement st = conn.prepareStatement(SELECT_ALL_EMPLOYEES);
+        PreparedStatement st = conn.prepareStatement(SELECT_ALL_EMP_JOIN_JOB);
         ResultSet rs = st.executeQuery();
         ArrayList<Employees> Employee = new ArrayList<>();
         while (rs.next()) {

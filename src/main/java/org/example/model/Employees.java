@@ -1,6 +1,8 @@
 package org.example.model;
 
 
+import org.example.dto.JobsDto;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -16,10 +18,9 @@ public class Employees {
     private double salary;
     private int manager_id;
     private int department_id;
+    private Jobs jobId;
 
-    public Employees() {
-
-    }
+    public Employees() {}
 
     public Employees(int employee_id,
                      String first_name,
@@ -53,6 +54,9 @@ public class Employees {
         salary = rs.getDouble("salary");
         manager_id = rs.getInt("manager_id");
         department_id = rs.getInt("department_id");
+        if(rs.getMetaData().getColumnCount() > 10) {
+            jobId = new Jobs(rs);
+        }
     }
     public int getEmployee_id() {
         return employee_id;
@@ -132,6 +136,14 @@ public class Employees {
 
     public void setDepartment_id(int department_id) {
         this.department_id = department_id;
+    }
+
+    public Jobs getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Jobs jobId) {
+        this.jobId = jobId;
     }
 
     @Override

@@ -1,0 +1,20 @@
+package org.example.Mapper;
+
+import org.example.dto.PaymentTypeDto;
+import org.example.model.PaymentType;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.ValueMapping;
+
+public interface PaymentTypeMapper {
+
+    //    @ValueMapping(source = "CARD_VISA", target = "CARD")
+//    @ValueMapping(source = "CARD_MASTER", target = "CARD")
+//    @ValueMapping(source = "CARD_CREDIT", target = "CARD")
+    @ValueMapping(source = MappingConstants.ANY_REMAINING, target = "CARD")
+//    @ValueMapping(source = "CASH", target = "CASH")
+//    @ValueMapping(source = "CHEQUE", target = "CHEQUE")
+//    @ValueMapping(source = MappingConstants.ANY_UNMAPPED, target = "CARD")
+    PaymentTypeDto toDto(PaymentType p);
+
+
+}
