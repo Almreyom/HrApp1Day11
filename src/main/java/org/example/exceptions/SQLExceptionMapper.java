@@ -9,7 +9,7 @@ import org.example.dto.ErrorMessage;
 import java.sql.SQLException;
 
 @Provider
-public class  SQLExceptionMapper implements ExceptionMapper<SQLException> {
+public class   SQLExceptionMapper implements ExceptionMapper<SQLException> {
 
     @Override
     public Response toResponse(SQLException exception) {
