@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class EmployeeDAO {
 
-    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\Hrapp1day9\\src\\main\\java\\org\\example\\hr.db";
+    private static final String URL = "jdbc:sqlite:C:\\Users\\dev\\Desktop\\Hrapp1day10\\src\\main\\java\\org\\example\\hr.db";
     private  static final  String SELECT_ALL_EMPLOYEES = "select * from employees";
     private static final String SELECT_ONE_EMPLOYEE = "select * from employees where employee_id = ?";
     private static final String SELECT_ALL_EMP_JOIN_JOB = "select * from jobs join employees on jobs.job_id = employees.job_id";

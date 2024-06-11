@@ -1,15 +1,13 @@
 package org.example.controller;
+
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
+import org.example.Mapper.EmployeeMapper;
 import org.example.dao.EmployeeDAO;
 import org.example.dao.JobsDAO;
 import org.example.dto.EmployeeFilterDto;
 import org.example.dto.EmployeesDto;
-import org.example.exception.DataNotFoundException;
-import org.example.mappers.EmployeeMapper;
-import org.example.mappers.JobMapper;
-import org.example.models.Employees;
-import org.example.models.Jobs;
+import org.example.model.Employees;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -21,8 +19,10 @@ public class EmployeeController {
 
     JobsDAO jobDao = new JobsDAO();
     EmployeeDAO dao = new EmployeeDAO();
-    @Context UriInfo uriInfo;
-    @Context HttpHeaders headers;
+    @Context
+    UriInfo uriInfo;
+    @Context
+    HttpHeaders headers;
 
 
 
